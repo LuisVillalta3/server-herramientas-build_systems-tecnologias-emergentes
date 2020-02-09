@@ -31,6 +31,13 @@ class UsersController {
     if (user.length > 0) { return res.json(user[0]); }
     res.status(404).json({ message: "The user doesn't exits"});
   }
+
+  public async login (req: Request, res: Response): Promise<any> {
+    const { email } = req.params;
+    const user = await pool.query('SELECT * FROM users where email = ?', [email]);
+    if (user.length > 0) { return res.json(user[0]); }
+    res.status(404).json({ message: "The user doesn't exits"});
+  }
 }
 
 const usersController = new UsersController();
