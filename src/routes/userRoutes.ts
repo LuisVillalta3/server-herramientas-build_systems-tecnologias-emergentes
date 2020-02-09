@@ -13,7 +13,7 @@ class UsersRoutes {
     this.router.post('/', usersController.create);
     this.router.delete('/:id', usersController.delete);
     this.router.get('/:id', usersController.show);
-    this.router.get('/email/:id', usersController.login);
+    this.router.get('/login/:email', usersController.login);
     this.router.put('/:id', usersController.update);
   }
 }
