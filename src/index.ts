@@ -1,6 +1,7 @@
 import express, { Application } from 'express';
 import morgan from 'morgan';
 import cors from 'cors';
+import path from 'path';
 
 import indexRoutes from './routes/indexRoutes';
 import productRoutes from './routes/productRoutes';
@@ -21,12 +22,14 @@ class Server {
     this.app.use(cors());
     this.app.use(express.json());
     this.app.use(express.urlencoded({extended: false}));
+    this.app.use(express.static(path.join(__dirname,'public')));
   }
 
   routes(): void {
     this.app.use('/', indexRoutes);
     this.app.use('/api/users', userRoutes);
     this.app.use('/api/products', productRoutes);
+    this.app.use(express.static('public/images'));
   }
 
   start(): void {
