@@ -25,6 +25,12 @@ class ProductsController {
     res.json({ message: "The product was updated"});
   }
 
+  public async search (req: Request, res: Response): Promise<void> {
+    const { name } = req.params;
+    const products = await pool.query('SELECT * FROM products where name = ?', [name]);
+    res.json(products);
+  }
+
   public async show (req: Request, res: Response): Promise<any> {
     const { id } = req.params;
     const product = await pool.query('SELECT * FROM products where id = ?', [id]);

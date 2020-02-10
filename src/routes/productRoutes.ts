@@ -13,6 +13,7 @@ class ProductsRoutes {
     this.router.post('/', productsController.create);
     this.router.delete('/:id', productsController.delete);
     this.router.get('/:id', productsController.show);
+    this.router.get('/search/:name', productsController.search);
     this.router.put('/:id', productsController.update);
   }
 }
