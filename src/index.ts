@@ -5,6 +5,7 @@ import path from 'path';
 
 import indexRoutes from './routes/indexRoutes';
 import productRoutes from './routes/productRoutes';
+import searchRoute from './routes/searchRoute';
 import userRoutes from './routes/userRoutes';
 
 class Server {
@@ -29,6 +30,7 @@ class Server {
     this.app.use('/', indexRoutes);
     this.app.use('/api/users', userRoutes);
     this.app.use('/api/products', productRoutes);
+    this.app.use('/api/search', searchRoute);
     this.app.use(express.static('public/images'));
   }
 
